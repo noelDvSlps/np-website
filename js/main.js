@@ -123,4 +123,91 @@ for (const elm of closeModal) {
   });
 }
 
+let portfolioCards = [
+  {
+    dataItem: "web",
+    source: "./assets/images/portfolio-1.jpg",
+    link: "#",
+    title: "Web Development",
+    subTitle: "Food Website",
+  },
+  {
+    dataItem: "web",
+    source: "./assets/images/portfolio-2.jpg",
+    link: "#",
+    title: "Web Development",
+    subTitle: "Skate Website",
+  },
+  {
+    dataItem: "web",
+    source: "./assets/images/portfolio-3.jpg",
+    link: "#",
+    title: "Web Development",
+    subTitle: "Eating Website",
+  },
+  {
+    dataItem: "ui",
+    source: "./assets/images/portfolio-4.jpg",
+    link: "#",
+    title: "UI Design",
+    subTitle: "Cool Design",
+  },
+  {
+    dataItem: "app",
+    source: "./assets/images/portfolio-5.jpg",
+    link: "#",
+    title: "App Development",
+    subTitle: "Game App",
+  },
+  {
+    dataItem: "app",
+    source: "./assets/images/portfolio-6.jpg",
+    link: "#",
+    title: "App Development",
+    subTitle: "Gambling App",
+  },
+  {
+    dataItem: "app",
+    source: "./assets/images/portfolio-7.jpg",
+    link: "#",
+    title: "App Development",
+    subTitle: "Money Website",
+  },
+  {
+    dataItem: "ui",
+    source: "./assets/images/portfolio-8.jpg",
+    link: "#",
+    title: "UI Design",
+    subTitle: "Fantastic Design",
+  },
+];
 
+portfolioCards.forEach((card) => {
+  const portfolioGrid = document.getElementById("portfolio-grid");
+  const portfolioCard = document.createElement("div");
+  portfolioCard.className = "portfolio-card";
+  const cardBody = document.createElement("div");
+  cardBody.className = "card-body";
+  const cardImg = document.createElement("img");
+  cardImg.alt = "portfolio-icon";
+  const cardLink = document.createElement("a");
+  cardLink.className = "card-popup-box";
+  const cardLinkTitle = document.createElement("div");
+  const cardLinkText = document.createElement("h3");
+
+  console.log(card.dataItem);
+  portfolioCard.dataset.item = card.dataItem;
+  cardImg.src = card.source;
+  cardLink.href = card.link;
+  cardLinkTitle.innerText = card.title;
+  cardLinkText.innerText = card.subTitle;
+
+  portfolioGrid.appendChild(portfolioCard);
+  portfolioCard.appendChild(cardBody);
+  cardBody.appendChild(cardImg);
+  cardBody.appendChild(cardLink);
+  cardLink.appendChild(cardLinkTitle);
+  cardLink.appendChild(cardLinkText);
+});
+
+portfolioItems = document.querySelectorAll(portfolioData);
