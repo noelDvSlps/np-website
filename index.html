@@ -86,7 +86,90 @@
           </ul>
         </div>
 
-        <div class="portfolio-grid" id="portfolio-grid"></div>
+        <div class="portfolio-grid" id="portfolio-grid">
+
+          <div class="portfolio-card" data-item="web" data-open="web-1">
+            <div class="card-body">
+              <img src="./assets/images/portfolio-1.jpg" alt="porfolio icon">
+              <a href="#" class="card-popup-box">
+                <div>Web Development</div>
+                <h3>Food Website</h3>
+              </a>
+            </div>
+          </div>
+          
+
+          <div class="portfolio-card" data-item="web">
+            <div class="card-body">
+              <img src="./assets/images/portfolio-2.jpg" alt="porfolio icon">
+              <a href="#" class="card-popup-box">
+                <div>Web Development</div>
+                <h3>Skate Website</h3>
+              </a>
+            </div>
+          </div>
+
+          <div class="portfolio-card" data-item="web">
+            <div class="card-body">
+              <img src="./assets/images/portfolio-3.jpg" alt="porfolio icon">
+              <a href="#" class="card-popup-box">
+                <div>Web Development</div>
+                <h3>Eating Website</h3>
+              </a>
+            </div>
+          </div>
+          
+          <div class="portfolio-card" data-item="ui">
+            <div class="card-body">
+              <img src="./assets/images/portfolio-4.jpg" alt="porfolio icon">
+              <a href="#" class="card-popup-box">
+                <div>UI Design</div>
+                <h3>Cool Design</h3>
+              </a>
+            </div>
+          </div>
+          
+          <div class="portfolio-card" data-item="app">
+            <div class="card-body">
+              <img src="./assets/images/portfolio-5.jpg" alt="porfolio icon">
+              <a href="#" class="card-popup-box">
+                <div>App Development</div>
+                <h3>Game App</h3>
+              </a>
+            </div>
+          </div>
+          
+          <div class="portfolio-card" data-item="app">
+            <div class="card-body">
+              <img src="./assets/images/portfolio-6.jpg" alt="porfolio icon">
+              <a href="#" class="card-popup-box">
+                <div>App Development</div>
+                <h3>Gambling App</h3>
+              </a>
+            </div>
+          </div>
+          
+          <div class="portfolio-card" data-item="app">
+            <div class="card-body">
+              <img src="./assets/images/portfolio-7.jpg" alt="porfolio icon">
+              <a href="#" class="card-popup-box">
+                <div>App Development</div>
+                <h3>Money Website</h3>
+              </a>
+            </div>
+          </div>
+          
+          <div class="portfolio-card" data-item="ui">
+            <div class="card-body">
+              <img src="./assets/images/portfolio-8.jpg" alt="porfolio icon">
+              <a href="#" class="card-popup-box">
+                <div>UI Design</div>
+                <h3>Fantastic Design</h3>
+              </a>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       <!-- Modals -->
@@ -96,20 +179,22 @@
         class="full-site-modal page-block"
         data-animation="zoomInOut"
       >
-        <header class="modal-header">
-          <h3>ABOUT PAGE</h3>
-          <i class="fas fa-times" data-close></i>
-        </header>
-        <div class="modal-body">
-          <div class="img-wrapper">
-            <img src="./assets/images/img4.jpg" alt="headshot" />
-          </div>
-          <h2>Noel Pulido</h2>
-          <p>text 1</p>
-          <p>text 2</p>
-          <div>
-            <div>Email Me:</div>
-            <a href="mailto:noel@devslopes.com">noel@devslopes.com</a>
+        <div class="container-fluid">
+          <header class="modal-header">
+            <h3>ABOUT PAGE</h3>
+            <i class="fas fa-times" data-close></i>
+          </header>
+          <div class="modal-body">
+            <div class="img-wrapper">
+              <img src="./assets/images/img4.jpg" alt="headshot" />
+            </div>
+            <h2>Noel Pulido</h2>
+            <p>text 1</p>
+            <p>text 2</p>
+            <div>
+              <div>Email Me:</div>
+              <a href="mailto:noel@devslopes.com">noel@devslopes.com</a>
+            </div>
           </div>
         </div>
       </div>
@@ -120,23 +205,46 @@
         class="full-site-modal page-block"
         data-animation="zoomInOut"
       >
-        <header class="modal-header">
-          <h3>CONTACT PAGE</h3>
-          <i class="fas fa-times" data-close></i>
-        </header>
-        <div class="modal-body">
-          <div class="img-wrapper">
-            <img src="./assets/images/img4.jpg" alt="headshot" />
-          </div>
-          <h2>Noel Pulido</h2>
-          <p>text 1</p>
-          <p>text 2</p>
-          <div>
-            <div>Email Me:</div>
-            <a href="mailto:noel@devslopes.com">noel@devslopes.com</a>
+        <div class="container-fluid">
+          <header class="modal-header">
+            <h3>CONTACT PAGE</h3>
+            <i class="fas fa-times" data-close></i>
+          </header>
+          <div class="modal-body">
+            <div class="img-wrapper">
+              <img src="./assets/images/img4.jpg" alt="headshot" />
+            </div>
+            <h2>Noel Pulido</h2>
+            <p>text 1</p>
+            <p>text 2</p>
+            <div>
+              <div>Email Me:</div>
+              <a href="mailto:noel@devslopes.com">noel@devslopes.com</a>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Popup Modals -->
+      <div id="web-1" class="modal" data-animation="slideInOutTop">
+        <div class="modal-dialog">
+          <header class ="modal-header">
+            <h3>Web Project 1</h3>
+            <i class="fas fa-times" data-close></i>
+          </header>
+          <div class="modal-body">
+            <div class="img-wrapper">
+              <img src="./assets/images/portfolio-1.jpg" alt="portfolio image">
+            </div>
+            <div class="text-wrapper">
+              <p><strong>My first awesome website</strong></p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </main>
 
     <script src="./js/main.js"></script>
