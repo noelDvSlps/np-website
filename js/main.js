@@ -23,7 +23,7 @@ const currentTheme = localStorage.getItem(theme);
 
 /*Portfolio*/
 const filterLink = document.querySelectorAll(dataFilter);
-const portfolioItems = document.querySelectorAll(portfolioData);
+let portfolioItems = document.querySelectorAll(portfolioData);
 const searchBox = document.querySelector("#search");
 
 /* Modal*/
@@ -270,6 +270,7 @@ portfolioCards.forEach((card) => {
 //re-query
 openModal = document.querySelectorAll(modalOpen);
 closeModal = document.querySelectorAll(modalClose);
+portfolioItems = document.querySelectorAll(portfolioData);
 
 // Modal/Full Site Modal "open buttons"
 for (const elm of openModal) {
