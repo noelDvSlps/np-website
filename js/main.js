@@ -23,7 +23,7 @@ const currentTheme = localStorage.getItem(theme);
 
 /*Portfolio*/
 const filterLink = document.querySelectorAll(dataFilter);
-let portfolioItems = document.querySelectorAll(portfolioData);
+const portfolioItems = document.querySelectorAll(portfolioData);
 const searchBox = document.querySelector("#search");
 
 /* Modal*/
@@ -108,9 +108,7 @@ for (const link of filterLink) {
     });
   });
 }
-
-
-
+//Array of objects 
 let portfolioCards = [
   {
     dataItem: "web",
@@ -118,6 +116,8 @@ let portfolioCards = [
     source: "./assets/images/portfolio-1.jpg",
     title: "Web Development",
     subTitle: "Food Website",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     dataItem: "web",
@@ -125,6 +125,8 @@ let portfolioCards = [
     source: "./assets/images/portfolio-2.jpg",
     title: "Web Development",
     subTitle: "Skate Website",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     dataItem: "web",
@@ -132,6 +134,8 @@ let portfolioCards = [
     source: "./assets/images/portfolio-3.jpg",
     title: "Web Development",
     subTitle: "Eating Website",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     dataItem: "ui",
@@ -139,6 +143,8 @@ let portfolioCards = [
     source: "./assets/images/portfolio-4.jpg",
     title: "UI Design",
     subTitle: "Cool Design",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     dataItem: "app",
@@ -146,6 +152,8 @@ let portfolioCards = [
     source: "./assets/images/portfolio-5.jpg",
     title: "App Development",
     subTitle: "Game App",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     dataItem: "app",
@@ -153,6 +161,8 @@ let portfolioCards = [
     source: "./assets/images/portfolio-6.jpg",
     title: "App Development",
     subTitle: "Gambling App",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     dataItem: "app",
@@ -160,6 +170,8 @@ let portfolioCards = [
     source: "./assets/images/portfolio-7.jpg",
     title: "App Development",
     subTitle: "Money Website",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     dataItem: "ui",
@@ -167,82 +179,79 @@ let portfolioCards = [
     source: "./assets/images/portfolio-8.jpg",
     title: "UI Design",
     subTitle: "Fantastic Design",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
 ];
+//portfolioCards = array of objects
+function createModal(id) {
+  let card = portfolioCards.find((card) => {
+    return card.dataOpen == id;
+  })
+  let modal = document.createElement("div");
+  let modalDialog = document.createElement("div");
+  let header = document.createElement("header");
+  let h3 = document.createElement("h3");
+  let i = document.createElement("i");
+  let modalBody = document.createElement("div");
+  let imgWrapper = document.createElement("div");
+  let img = document.createElement("img");
+  let txtWrapper = document.createElement("div");
+  let p = document.createElement("p");
+  let bold = document.createElement("strong");
+  let p2 = document.createElement("p");
+  let p3 = document.createElement("p");
+  //Modal
+  modal.id = id;
+  modal.className = "modal";
+  modal.dataset.animation = "slideInOutTop";
+  modal.appendChild(modalDialog);
+  modalDialog.className = "modal-dialog";
+  modalDialog.appendChild(header);
+  modalDialog.appendChild(modalBody);
+  //Modal Header
+  header.className = "modal-header";
+  h3.innerText = card.title; //variable
+  i.className = "fas fa-times";
+  i.dataset.close = "";
+  i.addEventListener("click", function () {
+    this.parentElement.parentElement.parentElement.classList.remove(isVisible);
+  });
+  header.appendChild(h3);
+  header.appendChild(i);
+  //Modal Body
+  bold.innerText = card.subTitle;
+  p.appendChild(bold);
+  p2.innerText = card.paragraphOne; //variable
+  p3.innerText = card.paragraphTwo; //variable
+  txtWrapper.className = "text-wrapper";
+  img.src = card.source; //variable
+  modalBody.className = "modal-body";
+  imgWrapper.className = "img-wrapper";
+  modalBody.appendChild(imgWrapper);
+  imgWrapper.appendChild(img);
+  modalBody.appendChild(txtWrapper);
+  txtWrapper.appendChild(p);
+  txtWrapper.appendChild(p2);
+  txtWrapper.appendChild(p3);
 
-function createModal(id){
-    let modal = document.createElement("div");
-    modal.id = id
-    modal.className += "modal is-visible";
-    modal.dataset.animation = "slideInOutTop";
-    modal.appendChild(createModalDialog());
-    return modal;
-    
+  return modal;
 }
 
-function createModalDialog() {
-    let modalDialog = document.createElement("div");
-    modalDialog.className = "modal-dialog";
-    modalDialog.appendChild(createModalHeader('test'));
-    modalDialog.appendChild(createModalBody());
-    return modalDialog;
-}
-
-function createModalHeader(title){
-    let header = document.createElement("header");
-    let h3 = document.createElement("h3");
-    let i = document.createElement("i");
-    header.className = "modal-header"
-    h3.innerText = title;
-    i.className ="fas fa-times"; 
-    i.dataset.close = "";
-    header.appendChild(h3);
-    header.appendChild(i);
-    return header;
-}
-
-function createModalBody (){
-    let modalBody = document.createElement("div");
-    let imgWrapper = document.createElement("div")
-    let img =document.createElement("img");
-    let txtWrapper =document.createElement("div");
-    let p = document.createElement("p");
-    let bold = document.createElement('strong');
-    let p2 = document.createElement("p");
-    let p3 = document.createElement("p");
-
-     bold.innerText="Awesome Project";
-     p.appendChild(bold);
-    p2.innerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    p3.innerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    txtWrapper.className = "text-wrapper";
-    img.src="./assets/images/portfolio-2.jpg";
-    modalBody.className ="modal-body";
-    imgWrapper.className = "img-wrapper";
-    modalBody.appendChild(imgWrapper)
-    imgWrapper.appendChild(img);
-    modalBody.appendChild(txtWrapper);
-    txtWrapper.appendChild(p);
-    txtWrapper.appendChild(p2);
-    txtWrapper.appendChild(p3);
-
-    return modalBody;;
-}
-
-
+//create Portfolio cards
 portfolioCards.forEach((card) => {
-
   const portfolioGrid = document.getElementById("portfolio-grid");
   const portfolioCard = document.createElement("div");
-  portfolioCard.className = "portfolio-card";
   const cardBody = document.createElement("div");
-  cardBody.className = "card-body";
   const cardImg = document.createElement("img");
-  cardImg.alt = "portfolio-icon";
   const cardPopUpBox = document.createElement("div");
-  cardPopUpBox.className = "card-popup-box";
   const cardPopUpBoxTitle = document.createElement("div");
   const cardPopUpBoxText = document.createElement("h3");
+
+  portfolioCard.className = "portfolio-card";
+  cardBody.className = "card-body";
+  cardImg.alt = "portfolio-icon";
+  cardPopUpBox.className = "card-popup-box";
 
   portfolioCard.dataset.item = card.dataItem;
   portfolioCard.dataset.open = card.dataOpen;
@@ -257,58 +266,44 @@ portfolioCards.forEach((card) => {
   cardBody.appendChild(cardPopUpBox);
   cardPopUpBox.appendChild(cardPopUpBoxTitle);
   cardPopUpBox.appendChild(cardPopUpBoxText);
-  
 });
 
-
-
-
-
-//dmain
 openModal = document.querySelectorAll(modalOpen);
 closeModal = document.querySelectorAll(modalClose);
-portfolioItems = document.querySelectorAll(portfolioData);
 
-
-
-
-
-
-
-// Modal/full Site Modal "open buttons"
+// Modal/Full Site Modal "open buttons"
 for (const elm of openModal) {
   elm.addEventListener("click", function () {
     const modalId = this.dataset.open;
-    document.getElementById(modalId).classList.add(isVisible);
-    // const mainSection = document.getElementById("site-wrapper");
-    // mainSection.appendChild(createModal(modalId));
+    console.log(this);
+      if(this.classList.contains("portfolio-card")) {
+        if (document.querySelector(`.modal`)) {
+          document.querySelector(`.modal`).remove();
+        }
+        const mainSection = document.getElementById("site-wrapper");
+        mainSection.appendChild(createModal(modalId));
+      }
+      document.getElementById(modalId).classList.add(isVisible);
   });
 }
 
 for (const elm of closeModal) {
   elm.addEventListener("click", function () {
-    console.log(noel,this.parentElement.parentElement.parentElement.id);
     this.parentElement.parentElement.parentElement.classList.remove(isVisible);
-   
-    //this.parentElement.parentElement.parentElement.remove();
   });
 }
 
 // Modal
-document.addEventListener('click', (e) => {
-    console.log(e.target, document.querySelector('.modal.is-visible'));
-    if (e.target === document.querySelector('.modal.is-visible')) {
-        document.querySelector('.modal.is-visible').classList.remove(isVisible);
-    }
-})
+document.addEventListener("click", (e) => {
+  //console.log(e.target, document.querySelector('.modal.is-visible'));
+  if (e.target === document.querySelector(".modal.is-visible")) {
+    document.querySelector(".modal.is-visible").classList.remove(isVisible);
+  }
+});
 
-document.addEventListener('keyup', (e) => {
-    console.log(e.key);
-    if (e.key === 'Escape') {
-        document.querySelector('.modal.is-visible').classList.remove(isVisible);
-    }
-})
-
-
-
-
+document.addEventListener("keyup", (e) => {
+  console.log(e.key);
+  if (e.key === "Escape") {
+    document.querySelector(".modal.is-visible").classList.remove(isVisible);
+  }
+});
