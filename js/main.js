@@ -23,12 +23,12 @@ const currentTheme = localStorage.getItem(theme);
 
 /*Portfolio*/
 const filterLink = document.querySelectorAll(dataFilter);
-let portfolioItems = document.querySelectorAll(portfolioData);
+const portfolioItems = document.querySelectorAll(portfolioData);
 const searchBox = document.querySelector("#search");
 
 /* Modal*/
-const openModal = document.querySelectorAll(modalOpen);
-const closeModal = document.querySelectorAll(modalClose);
+let openModal = document.querySelectorAll(modalOpen);
+let closeModal = document.querySelectorAll(modalClose);
 
 const setActive = (elm, selector) => {
   if (document.querySelector(`${selector}.${active}`) !== null) {
@@ -108,12 +108,182 @@ for (const link of filterLink) {
     });
   });
 }
+//Array of objects 
+let portfolioCards = [
+  {
+    dataItem: "web",
+    dataOpen: "web-1",
+    source: "./assets/images/portfolio-1.jpg",
+    title: "Web Development",
+    subTitle: "Food Website",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    dataItem: "web",
+    dataOpen: "web-2",
+    source: "./assets/images/portfolio-2.jpg",
+    title: "Web Development",
+    subTitle: "Skate Website",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    dataItem: "web",
+    dataOpen: "web-3",
+    source: "./assets/images/portfolio-3.jpg",
+    title: "Web Development",
+    subTitle: "Eating Website",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    dataItem: "ui",
+    dataOpen: "ui-1",
+    source: "./assets/images/portfolio-4.jpg",
+    title: "UI Design",
+    subTitle: "Cool Design",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    dataItem: "app",
+    dataOpen: "app-1",
+    source: "./assets/images/portfolio-5.jpg",
+    title: "App Development",
+    subTitle: "Game App",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    dataItem: "app",
+    dataOpen: "app-2",
+    source: "./assets/images/portfolio-6.jpg",
+    title: "App Development",
+    subTitle: "Gambling App",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    dataItem: "app",
+    dataOpen: "app-3",
+    source: "./assets/images/portfolio-7.jpg",
+    title: "App Development",
+    subTitle: "Money Website",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    dataItem: "ui",
+    dataOpen: "ui-2",
+    source: "./assets/images/portfolio-8.jpg",
+    title: "UI Design",
+    subTitle: "Fantastic Design",
+    paragraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    paragraphTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+];
+//portfolioCards = array of objects
+function createModal(id) {
+  let card = portfolioCards.find((card) => {
+    return card.dataOpen == id;
+  })
+  let modal = document.createElement("div");
+  let modalDialog = document.createElement("div");
+  let header = document.createElement("header");
+  let h3 = document.createElement("h3");
+  let i = document.createElement("i");
+  let modalBody = document.createElement("div");
+  let imgWrapper = document.createElement("div");
+  let img = document.createElement("img");
+  let txtWrapper = document.createElement("div");
+  let p = document.createElement("p");
+  let bold = document.createElement("strong");
+  let p2 = document.createElement("p");
+  let p3 = document.createElement("p");
+  //Modal
+  modal.id = id;
+  modal.className = "modal";
+  modal.dataset.animation = "slideInOutTop";
+  modal.appendChild(modalDialog);
+  modalDialog.className = "modal-dialog";
+  modalDialog.appendChild(header);
+  modalDialog.appendChild(modalBody);
+  //Modal Header
+  header.className = "modal-header";
+  h3.innerText = card.title; //variable
+  i.className = "fas fa-times";
+  i.dataset.close = "";
+  i.addEventListener("click", function () {
+    this.parentElement.parentElement.parentElement.classList.remove(isVisible);
+  });
+  header.appendChild(h3);
+  header.appendChild(i);
+  //Modal Body
+  bold.innerText = card.subTitle;
+  p.appendChild(bold);
+  p2.innerText = card.paragraphOne; //variable
+  p3.innerText = card.paragraphTwo; //variable
+  txtWrapper.className = "text-wrapper";
+  img.src = card.source; //variable
+  modalBody.className = "modal-body";
+  imgWrapper.className = "img-wrapper";
+  modalBody.appendChild(imgWrapper);
+  imgWrapper.appendChild(img);
+  modalBody.appendChild(txtWrapper);
+  txtWrapper.appendChild(p);
+  txtWrapper.appendChild(p2);
+  txtWrapper.appendChild(p3);
 
-// Modal/full Site Modal "open buttons"
+  return modal;
+}
+
+//create Portfolio cards
+portfolioCards.forEach((card) => {
+  const portfolioGrid = document.getElementById("portfolio-grid");
+  const portfolioCard = document.createElement("div");
+  const cardBody = document.createElement("div");
+  const cardImg = document.createElement("img");
+  const cardPopUpBox = document.createElement("div");
+  const cardPopUpBoxTitle = document.createElement("div");
+  const cardPopUpBoxText = document.createElement("h3");
+
+  portfolioCard.className = "portfolio-card";
+  cardBody.className = "card-body";
+  cardImg.alt = "portfolio-icon";
+  cardPopUpBox.className = "card-popup-box";
+
+  portfolioCard.dataset.item = card.dataItem;
+  portfolioCard.dataset.open = card.dataOpen;
+  cardImg.src = card.source;
+  cardPopUpBox.href = card.link;
+  cardPopUpBoxTitle.innerText = card.title;
+  cardPopUpBoxText.innerText = card.subTitle;
+
+  portfolioGrid.appendChild(portfolioCard);
+  portfolioCard.appendChild(cardBody);
+  cardBody.appendChild(cardImg);
+  cardBody.appendChild(cardPopUpBox);
+  cardPopUpBox.appendChild(cardPopUpBoxTitle);
+  cardPopUpBox.appendChild(cardPopUpBoxText);
+});
+//re-query
+openModal = document.querySelectorAll(modalOpen);
+closeModal = document.querySelectorAll(modalClose);
+
+// Modal/Full Site Modal "open buttons"
 for (const elm of openModal) {
   elm.addEventListener("click", function () {
     const modalId = this.dataset.open;
-    document.getElementById(modalId).classList.add(isVisible);
+    console.log(this);
+      if(this.classList.contains("portfolio-card")) {
+        if (document.querySelector(`.modal`)) {
+          document.querySelector(`.modal`).remove();
+        }
+        const mainSection = document.getElementById("site-wrapper");
+        mainSection.appendChild(createModal(modalId));
+      }
+      document.getElementById(modalId).classList.add(isVisible);
   });
 }
 
@@ -124,103 +294,16 @@ for (const elm of closeModal) {
 }
 
 // Modal
-document.addEventListener('click', (e) => {
-    if (e.target === document.querySelector('.modal.is-visible')) {
-        document.querySelector('.modal.is-visible').classList.remove(isVisible);
-    }
-})
+document.addEventListener("click", (e) => {
+  //console.log(e.target, document.querySelector('.modal.is-visible'));
+  if (e.target === document.querySelector(".modal.is-visible")) {
+    document.querySelector(".modal.is-visible").classList.remove(isVisible);
+  }
+});
 
-document.addEventListener('keyup', (e) => {
-    if (e.key === 'Escape') {
-        document.querySelector('.modal.is-visible').classList.remove(isVisible);
-    }
-})
-
-// let portfolioCards = [
-//   {
-//     dataItem: "web",
-//     source: "./assets/images/portfolio-1.jpg",
-//     link: "#",
-//     title: "Web Development",
-//     subTitle: "Food Website",
-//   },
-//   {
-//     dataItem: "web",
-//     source: "./assets/images/portfolio-2.jpg",
-//     link: "#",
-//     title: "Web Development",
-//     subTitle: "Skate Website",
-//   },
-//   {
-//     dataItem: "web",
-//     source: "./assets/images/portfolio-3.jpg",
-//     link: "#",
-//     title: "Web Development",
-//     subTitle: "Eating Website",
-//   },
-//   {
-//     dataItem: "ui",
-//     source: "./assets/images/portfolio-4.jpg",
-//     link: "#",
-//     title: "UI Design",
-//     subTitle: "Cool Design",
-//   },
-//   {
-//     dataItem: "app",
-//     source: "./assets/images/portfolio-5.jpg",
-//     link: "#",
-//     title: "App Development",
-//     subTitle: "Game App",
-//   },
-//   {
-//     dataItem: "app",
-//     source: "./assets/images/portfolio-6.jpg",
-//     link: "#",
-//     title: "App Development",
-//     subTitle: "Gambling App",
-//   },
-//   {
-//     dataItem: "app",
-//     source: "./assets/images/portfolio-7.jpg",
-//     link: "#",
-//     title: "App Development",
-//     subTitle: "Money Website",
-//   },
-//   {
-//     dataItem: "ui",
-//     source: "./assets/images/portfolio-8.jpg",
-//     link: "#",
-//     title: "UI Design",
-//     subTitle: "Fantastic Design",
-//   },
-// ];
-
-// portfolioCards.forEach((card) => {
-//   const portfolioGrid = document.getElementById("portfolio-grid");
-//   const portfolioCard = document.createElement("div");
-//   portfolioCard.className = "portfolio-card";
-//   const cardBody = document.createElement("div");
-//   cardBody.className = "card-body";
-//   const cardImg = document.createElement("img");
-//   cardImg.alt = "portfolio-icon";
-//   const cardLink = document.createElement("a");
-//   cardLink.className = "card-popup-box";
-//   const cardLinkTitle = document.createElement("div");
-//   const cardLinkText = document.createElement("h3");
-
-//   console.log(card.dataItem);
-//   portfolioCard.dataset.item = card.dataItem;
-//   cardImg.src = card.source;
-//   cardLink.href = card.link;
-//   cardLinkTitle.innerText = card.title;
-//   cardLinkText.innerText = card.subTitle;
-
-//   portfolioGrid.appendChild(portfolioCard);
-//   portfolioCard.appendChild(cardBody);
-//   cardBody.appendChild(cardImg);
-//   cardBody.appendChild(cardLink);
-//   cardLink.appendChild(cardLinkTitle);
-//   cardLink.appendChild(cardLinkText);
-// });
-
-// portfolioItems = document.querySelectorAll(portfolioData);
+document.addEventListener("keyup", (e) => {
+  console.log(e.key);
+  if (e.key === "Escape") {
+    document.querySelector(".modal.is-visible").classList.remove(isVisible);
+  }
+});
