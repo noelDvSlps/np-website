@@ -267,7 +267,7 @@ portfolioCards.forEach((card) => {
   cardPopUpBox.appendChild(cardPopUpBoxTitle);
   cardPopUpBox.appendChild(cardPopUpBoxText);
 });
-
+//re-query
 openModal = document.querySelectorAll(modalOpen);
 closeModal = document.querySelectorAll(modalClose);
 
