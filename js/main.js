@@ -276,7 +276,6 @@ portfolioItems = document.querySelectorAll(portfolioData);
 for (const elm of openModal) {
   elm.addEventListener("click", function () {
     const modalId = this.dataset.open;
-    console.log(this);
       if(this.classList.contains("portfolio-card")) {
         if (document.querySelector(`.modal`)) {
           document.querySelector(`.modal`).remove();
